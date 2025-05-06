@@ -1,0 +1,25 @@
+{
+    "name": "ivangonzalezfnx/main-muni-jocotenango",
+    "description": "Proyecto principal de la Municipalidad de Jocotenango, con PHP puro.",
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models",
+            "Classes\\" : "./classes"
+        }
+    },
+    "authors": [
+        {
+            "name": "ivangonzalezfnx",
+            "homepage": "https://x.com/@lamealfombras42",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "phpmailer/phpmailer": "^6.9",
+        "vlucas/phpdotenv": "^5.6",
+        "intervention/image": "^2.7"
+    }
+}

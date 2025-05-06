@@ -1,0 +1,42 @@
+CREAR EL ARCHIVO PACKAGE.JSON:
+    npm init
+
+DESCARGAR DEPENDENCIAS DE DESARROLLO ACTUALIZADAS (06-05-2025):
+    npm install -D css-loader cssnano gulp gulp-autoprefixer gulp-avif gulp-cache gulp-clean gulp-concat gulp-imagemin@7.1.0 gulp-notify gulp-plumber gulp-postcss gulp-rename gulp-sass gulp-sourcemaps gulp-terser-js gulp-webp sass style-loader terser
+
+DESCARGAR DEPENDENCIAS ACTUALIZADAS (06-05-2025):
+    npm install sweetalert2 swiper webpack-stream
+
+INSTALAR DEPENDENCIAS DE DESARROLLO:
+    npm install
+
+CREAR EL ARCHIVO COMPOSER.JSON:
+    composer init
+
+CONFIGURACIÓN INCICIAL PARA EL CORRECTO USO DE COMPOSER:
+    {
+        "name": "ivangonzalezfnx/main-muni-jocotenango",
+        "description": "Proyecto principal de la Municipalidad de Jocotenango, con PHP puro.",
+        "autoload": {
+            "psr-4": {
+                "MVC\\" : "./",
+                "Controllers\\" : "./controllers",
+                "Model\\" : "./models",
+                "Classes\\" : "./classes"
+            }
+        },
+        "authors": [
+            {
+                "name": "ivangonzalezfnx",
+                "homepage": "https://x.com/@lamealfombras42",
+                "role": "Developer"
+            }
+        ],
+        "require": {
+            "php": "^8.1",
+            "phpmailer/phpmailer": "^6.9",
+            "vlucas/phpdotenv": "^5.6",
+            "intervention/image": "^2.7"
+        }
+    }
+

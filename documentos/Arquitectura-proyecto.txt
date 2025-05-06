@@ -1,0 +1,52 @@
+proyecto-muni-jocotenango/
+├──	documentos/
+│	├── Arquitectura-proyecto.txt
+│	├── Diagrama-entidad-relacion.drawio
+│	├── Diagrama=entidad-relacion.jpg
+│	└── Querys.txt
+├──	main-muni-jocotenango/
+│	├── classes/
+│	│	└── Correo.php
+│	├── controllers/
+│	│	└── AuthController.php
+│	├── includes/
+│	│	├── migrations/
+│	│	│   └── 2025_05_06_000001_create_usuarios_table.php
+│	│	├── .env
+│	│	├── app.php
+│	│	├── conexion.php
+│	│	└── funciones.php
+│	├── models/
+│	│	├── ActiveRecord.php
+│	│	└── Usuario.php
+│	├── node_modules/
+│	├── public/
+│	│	├── build/
+│	│	│	├── img/
+│	│	│	├── js/
+│	│	│	└── scss/
+│	│   └── index.php
+│	├── src/
+│	│	├── img/
+│	│	├── js/
+│	│	└── scss/
+│	├── vendor/
+│	├── views/
+│	│	├── auth/
+│	│	│	├── confirmar.php
+│	│	│	├── login.php
+│	│	│	├── mensaje.php
+│	│	│	├── olvidar.php
+│	│	│	├── registro.php
+│	│	│	└── restablecer.php
+│	│	├── templates/
+│	│	│	├── footer.php
+│	│	│	└── header.php
+│	│	└── layout.php
+│	├── Comandos.txt
+│	├── composer.json
+│	├── composer.lock
+│	├── gulpfile.js
+│	├── package-lock.json
+│	├── package.json
+│	└── Router.php

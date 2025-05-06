@@ -1,0 +1,19 @@
+# Dependencias
+node_modules/
+vendor/
+package-lock.json
+composer.lock
+
+# Archivos sensibles
+main-muni-jocotenango/includes/.env
+
+# Archivos generados
+main-muni-jocotenango/public/build/
+
+# Archivos de editores
+.vscode/
+.idea/
+
+# Archivos temporales
+*.log
+*.cache
