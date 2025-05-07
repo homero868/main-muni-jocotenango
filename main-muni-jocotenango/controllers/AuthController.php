@@ -30,6 +30,13 @@ class AuthController {
                         $_SESSION['apellido'] = $usuario->apellido;
                         $_SESSION['correo'] = $usuario->correo;
                         $_SESSION['rol'] = $usuario->rol ?? null;
+
+                        // Redirección.
+                        if ($usuario->admin) {
+                            header('Location: /admin/dashboard');
+                        } else {
+                            header('Location: /finalizar-registro');
+                        }
                     } else {
                         Usuario::setAlerta('error', '¡La contraseña ingresada es incorrecta!');
                     }
@@ -50,6 +57,7 @@ class AuthController {
     public static function logout() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
+
             $_SESSION = [];
             header('Location: /');
         }
@@ -62,7 +70,7 @@ class AuthController {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario->sincronizar($_POST);
-            $alertas = $alertas->validarCuenta();
+            $alertas = $alertas->validarNuevaCuenta();
 
             if (empty($alertas)) {
                 $existeUsuario = Usuario::where('correo', $usuario->correo);
@@ -84,7 +92,7 @@ class AuthController {
                     $resultado = $usuario->guardar();
 
                     // Enviar el correo.
-                    $correo = new Correo($usuario->correo, $usuario->nombre, $usuario->apellido, $usuario->token);
+                    $correo = new Correo($usuario->nombre, $usuario->apellido, $usuario->correo, $usuario->token);
                     $correo->enviarConfirmacion();
 
                     if ($resultado) header('Location: /mensaje');
@@ -121,7 +129,7 @@ class AuthController {
                     $usuario->guardar();
 
                     // Enviar el correo.
-                    $correo = new Correo($usuario->correo, $usuario->nombre, $usuario->apellido, $usuario->token);
+                    $correo = new Correo($usuario->nombre, $usuario->apellido, $usuario->correo, $usuario->token);
                     $correo->enviarInstrucciones();
 
                     $alertas['exito'][] = '¡Se han enviado las instrucciones, por favor ponerse en contacto con un administrador (Iván)!';
@@ -139,6 +147,7 @@ class AuthController {
     }
 
     public static function restablecer(Router $router) {
+        $alertas = [];
         $token = s($_GET['token']);
         $token_valido = true;
 
@@ -148,7 +157,7 @@ class AuthController {
         $usuario = Usuario::where('token', $token);
 
         if (empty($usuario)) {
-            Usuario::setAlerta('error', '¡Token no válido, por favor intente de nuevo!');
+            Usuario::setAlerta('error', '¡Token no válido!');
             $token_valido = false;
         }
 
@@ -193,6 +202,7 @@ class AuthController {
 
 
     public static function confirmar() {
+        $alertas = [];
         $token = s($_GET['token']);
 
         if(!$token) header('Location: /');
@@ -202,7 +212,7 @@ class AuthController {
 
         if (empty($usuario)) {
             // Por si no se encontró un usuario con ese token.
-            Usuario::setAlerta('error', '¡Token no válido!');
+            Usuario::setAlerta('error', '¡Token no válido, la cuenta no se pudo confirmar!');
         } else {
             // Confirmar la cuenta.
             $usuario->confirmado = 1;

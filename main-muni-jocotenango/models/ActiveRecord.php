@@ -129,7 +129,7 @@ class ActiveRecord {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE id = ${id}";
         $resultado = self::consultarSQL($query);
 
-        return array_shift( $resultado ) ;
+        return array_shift($resultado) ;
     }
 
     // Obtener registros con cierta cantidad.
@@ -137,7 +137,7 @@ class ActiveRecord {
         $query = "SELECT * FROM " . static::$tabla . " LIMIT ${limite} ORDER BY id DESC" ;
         $resultado = self::consultarSQL($query);
 
-        return array_shift( $resultado ) ;
+        return array_shift($resultado) ;
     }
 
     // Busqueda where con columna.
@@ -145,7 +145,7 @@ class ActiveRecord {
         $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";
         $resultado = self::consultarSQL($query);
 
-        return array_shift( $resultado ) ;
+        return array_shift($resultado) ;
     }
 
     // Crear un nuevo registro.
